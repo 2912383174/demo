@@ -1,32 +1,35 @@
-/*
- * Copyright 2013-2018 the original author or authors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+package com.example.demo.controller;
 
-package com.example.demo.demos.web;
-
+import com.example.demo.entity.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-/**
- * @author <a href="mailto:chenxilzx1@gmail.com">theonefx</a>
- */
 @Controller
-public class PathVariableController {
+public class TestController {
+    /**
+     * 测试视图解析器
+     */
+    @RequestMapping("/hello")
+    public String hello(Model model) {
+        String name = "时空";
+        String description = "springboot配合Jenkins实现自动化部署";
+        model.addAttribute("name", name);
+        model.addAttribute("des",description);
+        return "hello";
+    }
+    // http://127.0.0.1:8080/user
+    @RequestMapping("/user")
+    @ResponseBody
+    public User user() {
+        User user = new User();
+        user.setName("theonefx");
+        user.setAge(666);
+        return user;
+    }
 
     // http://127.0.0.1:8080/user/123/roles/222
     @RequestMapping(value = "/user/{userId}/roles/{roleId}", method = RequestMethod.GET)
