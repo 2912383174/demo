@@ -17,8 +17,10 @@ public class TestController {
     public String hello(Model model) {
         String name = "时空";
         String description = "springboot配合Jenkins实现自动化部署";
+        String test = "测试成功";
         model.addAttribute("name", name);
         model.addAttribute("des",description);
+        model.addAttribute("test",test);
         return "hello";
     }
     // http://127.0.0.1:8080/user
