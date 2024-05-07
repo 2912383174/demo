@@ -29,7 +29,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class BasicController {
 
     // http://127.0.0.1:8080/hello?name=lisi
-    @RequestMapping("/hello")
+    @RequestMapping("/thehello")
     @ResponseBody
     public String hello(@RequestParam(name = "name", defaultValue = "unknown user") String name) {
         return "Hello " + name;
@@ -41,6 +41,14 @@ public class BasicController {
     public User user() {
         User user = new User();
         user.setName("theonefx");
+        user.setAge(666);
+        return user;
+    }
+    @RequestMapping("/index")
+    @ResponseBody
+    public User index() {
+        User user = new User();
+        user.setName("时空");
         user.setAge(666);
         return user;
     }
